@@ -1,0 +1,24 @@
+---
+- name: Universal package update
+  hosts: all
+  become: true
+  tasks:
+
+    - name: Update system packages (generic)
+      ansible.builtin.package:
+        update_cache: true
+        upgrade: true
+      when: ansible_facts['os_family'] not in ['Archlinux']
+
+    - name: Update pacman packages (Arch)
+      ansible.builtin.pacman:
+        update_cache: true
+        upgrade: true
+      when: ansible_facts['os_family'] == 'Archlinux'
+
+    - name: Update AUR packages (Arch only)
+      ansible.builtin.shell: |
+        sudo -u aur_builder bash -c 'yay -Syu --noconfirm'
+      args:
+        executable: /bin/bash
+      when: ansible_facts['os_family'] == 'Archlinux'
