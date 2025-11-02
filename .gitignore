@@ -1,0 +1,76 @@
+# ==============================
+# Ansible Git Ignore Template
+# ==============================
+
+# Ignore Ansible-generated files
+*.retry
+*.log
+*.tmp
+*.swp
+*.bak
+
+# Ignore compiled Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore local collections and roles cache
+.ansible/
+.venv/
+.env/
+venv/
+.envrc
+*.egg-info
+
+# Ignore SSH keys and vault passwords
+*.pem
+*.key
+*.id_rsa
+*.id_ed25519
+vault_pass.txt
+vault_password_file
+.secret*
+*.enc
+*.vault.yml
+secrets/
+private_vars/
+
+# Ignore inventory overrides or sensitive host data
+inventory.yml
+inventories/local/
+inventories/dev/
+inventories/test/
+inventories/tmp/
+host_vars/*_private.yml
+group_vars/*_private.yml
+
+# Ignore logs and debug output
+logs/
+*.log
+debug.log
+ansible.log
+
+# Ignore editor and system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore Git internals (if any nested repos exist)
+.git/
+.gitignore
+.gitmodules
+
+# Ignore backup or temporary files from runs
+tmp/
+cache/
+*.tar.gz
+*.zip
+*.tgz
+
+# Ignore Semaphore or CI runtime files
+.semaphore/
+ci_cache/
+pipeline_output/
